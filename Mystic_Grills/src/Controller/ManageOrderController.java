@@ -23,5 +23,6 @@ public class ManageOrderController {
 	public void LoadData() {
 		ArrayList<Order> orders = Order.getAll();
 	}
+//	UPDATE
 
 }
