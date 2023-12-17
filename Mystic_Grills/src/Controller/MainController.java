@@ -5,8 +5,10 @@ import Model.User;
 import View.CartView;
 import View.MainView;
 import View.ManageMenuItemView;
+import View.ManageOrderView;
 import View.ManageUserView;
 import View.OrderMenuItemView;
+import View.prepareOrder;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -30,6 +32,10 @@ public class MainController {
 		else if(user_role.equals(User.ROLE.ADMIN)) {
 			AdminListener();
 		}
+		else if(user_role.equals(User.ROLE.CHEF)) {
+			ChefListener();
+		}
+		
 	}
 	
 	private void AdminListener() {
@@ -65,6 +71,22 @@ public class MainController {
 				primary_stage.setScene(scene);
 			}
 			
+		});
+	}
+	
+	private void ChefListener() {
+		main_view.getManage_order_button().setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				ManageOrderView manage_order_view = new ManageOrderView();
+				ManageOrderController manage_order_controller = new ManageOrderController(
+						manage_order_view, primary_stage);
+				Scene scene = manage_order_view.getScene();
+				primary_stage.setScene(scene);
+						
+				
+			};
 		});
 	}
 	

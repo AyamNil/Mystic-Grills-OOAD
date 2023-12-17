@@ -63,6 +63,14 @@ public class MainView {
 		return menuitem_button;
 	}
 
+	public Button getManage_order_button() {
+		return manage_order_button;
+	}
+
+	public void setManage_order_button(Button manage_order_button) {
+		this.manage_order_button = manage_order_button;
+	}
+
 	public void setMenuitem_button(Button menuitem_button) {
 		this.menuitem_button = menuitem_button;
 	}

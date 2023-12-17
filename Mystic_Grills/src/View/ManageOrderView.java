@@ -1,10 +1,14 @@
 package View;
 
+import javax.swing.text.TabableView;
+
 import Model.MenuItem;
 import Model.Order;
 import Model.OrderItem;
+import Model.User;
 import View.TableView.MenuItemTable;
 import View.TableView.OrderTable;
+import View.TableView.UserTable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class userOrderView {
+public class ManageOrderView {
 	private TableView<Order> table_view;
 	private TextField id_field, name_field;
 	private Button order_button;
@@ -22,9 +26,13 @@ public class userOrderView {
 	private VBox vbox;
 	
 	
-	public userOrderView() {
-		TableView<OrderItem> table = new OrderTable().getTable_view();
-		InitForm();
+	public ManageOrderView() {
+		VBox vbox;
+		table_view = new TableView<Order>();
+		vbox = new VBox();
+		vbox.setSpacing(10);
+		vbox.setPadding(new Insets(10));    
+	    vbox.getChildren().addAll(table_view);
 		
 	}
 	

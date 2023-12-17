@@ -21,6 +21,10 @@ public class Order {
 		this.status = "Pending";
 	}
 	
+	public Order(int _id, String user_id2, String order_item, String _status, String _date) {
+		// TODO Auto-generated constructor stub
+	}
+
 	private int CalculateTotal() {
 		return 0;
 	}
@@ -111,6 +115,37 @@ public class Order {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public static ArrayList<Order> getAll(){
+		DBConnector db_connector = DBConnector.getInstance();
+    	String query = "SELECT * FROM orders";
+    	ArrayList<Order> orders = new ArrayList<>();
+    	
+    	PreparedStatement prepared_statement = db_connector.PrepareStatement(query);
+    	try {
+			ResultSet result_set = prepared_statement.executeQuery();
+			while(result_set.next()) {
+				int _id = result_set.getInt("id");
+				String user_id = result_set.getString("user_id");
+				String order_item = result_set.getString("order_item_id");
+				String _status = result_set.getString("status");
+				String _date = result_set.getString("date");
+				int _total = result_set.getInt("total");
+				
+				Order order = new Order(
+						_id, user_id, order_item, _status, _date
+					);
+				
+				orders.add(order);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	return orders;
+		
 	}
 
 	public int getId() {
